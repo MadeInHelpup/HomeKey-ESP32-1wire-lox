@@ -1,0 +1,55 @@
+menu "Loxone 1-Wire bridge"
+
+    config LOXONE_ONEWIRE
+        bool "Enable the Loxone 1-Wire bridge"
+        default n
+        help
+            After a successful HomeKey authentication the device presents a
+            virtual Dallas DS1990A iButton on a 1-Wire bus for a short time.
+            A Loxone 1-Wire Extension (or any other 1-Wire master) sees this as
+            an iButton being presented and can use it to grant access.
+
+            The feature is configured at runtime on the "Loxone" page of the
+            web UI. The options below only provide the initial values.
+
+    if LOXONE_ONEWIRE
+
+        config LOXONE_ONEWIRE_DEFAULT_ENABLED
+            bool "Start the bridge before it was configured in the web UI"
+            default y
+            help
+                Initial state of the bridge until the settings were saved once.
+
+        config LOXONE_ONEWIRE_GPIO
+            int "Default 1-Wire GPIO pin"
+            default 27 if IDF_TARGET_ESP32
+            default 4
+            range 0 48
+            help
+                Pin connected to the DATA line of the 1-Wire master. It must be
+                output capable (not GPIO34-39 on the ESP32) and needs an
+                external 4.7k pull-up resistor to 3.3V. The pin is driven
+                open-drain.
+
+        config LOXONE_ONEWIRE_ACTIVE_MS
+            int "Default time the iButton stays on the bus after a tap (ms)"
+            default 3000
+            range 500 4500
+            help
+                Loxone polls the bus roughly once per second, so 3000 ms gives
+                two to three poll cycles. Capped at 4500 ms because the bus task
+                busy-polls the pin while active and would otherwise trip the
+                idle task watchdog (default 5 s).
+
+        config LOXONE_ONEWIRE_TASK_CORE
+            int "CPU core of the bus task"
+            depends on !FREERTOS_UNICORE
+            range 0 1
+            default 1
+            help
+                The task runs at high priority and busy-polls the pin while an
+                iButton is presented. Pick the core that is less loaded.
+
+    endif
+
+endmenu

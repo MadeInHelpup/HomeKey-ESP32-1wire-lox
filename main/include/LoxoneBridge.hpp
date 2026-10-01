@@ -2,6 +2,7 @@
 #include <functional>
 
 #include "esp_http_server.h"
+#include "sdkconfig.h"
 
 // Thin adapter between the application and components/loxone_onewire.
 // Everything is a no-op unless CONFIG_LOXONE_ONEWIRE is enabled, so call sites

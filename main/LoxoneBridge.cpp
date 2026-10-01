@@ -1,4 +1,5 @@
 #include "LoxoneBridge.hpp"
+#include "sdkconfig.h"
 
 #ifdef CONFIG_LOXONE_ONEWIRE
 

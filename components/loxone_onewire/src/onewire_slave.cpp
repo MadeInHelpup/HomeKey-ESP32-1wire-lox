@@ -1,6 +1,7 @@
 #include "loxone_onewire/onewire_slave.hpp"
 
 #include "esp_log.h"
+#include "sdkconfig.h"
 #include "rom/ets_sys.h"
 
 #ifndef CONFIG_LOXONE_ONEWIRE_TASK_CORE

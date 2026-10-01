@@ -4,6 +4,7 @@
 #include <string>
 
 #include "esp_err.h"
+#include "sdkconfig.h"
 
 // Defaults come from Kconfig; the fallbacks keep the header usable when the
 // component is compiled without the Loxone options enabled.

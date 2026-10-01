@@ -95,9 +95,9 @@ Open `http://192.168.4.1`, enter WiFi credentials, note the HomeKit code, and pa
 Hold your iPhone or Apple Watch to the PN532. The serial monitor (and system log in Web UI) shows:
 
 ```
-I (XXXX) LoxoneOneWire: HomeKey tap — issuerId: f2963548...
-I (XXXX) LoxoneOneWire: issuerId: f2963548... → ROM: 01F29635484B2E48AA
-I (XXXX) LoxoneOneWire: Add to Loxone (if new): 01F29635484B2E48AA
+I (XXXX) LoxoneOneWire: HomeKey tap — issuerId: aabbccddeeff0011
+I (XXXX) LoxoneOneWire: issuerId: aabbccddeeff0011 → ROM: 01AABBCCDDEEFF2F
+I (XXXX) LoxoneOneWire: Add to Loxone (if new): 01AABBCCDDEEFF2F
 ```
 
 One `issuerId` covers all devices on the same Apple ID (iPhone + Apple Watch + iPad).

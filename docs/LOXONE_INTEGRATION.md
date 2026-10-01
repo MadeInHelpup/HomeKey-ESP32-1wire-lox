@@ -111,9 +111,9 @@ Die Active Duration sollte mindestens 2× das Loxone-Poll-Intervall betragen (~1
 
 Apple Device an den PN532 halten. Im Serial Monitor oder Web UI Logs erscheint:
 ```
-I LoxoneOneWire: HomeKey tap — issuerId: f2963548...
-I LoxoneOneWire: issuerId: f2963548... → ROM: 01F29635484B2E48AA
-I LoxoneOneWire: Add to Loxone (if new): 01F29635484B2E48AA
+I LoxoneOneWire: HomeKey tap — issuerId: aabbccddeeff0011
+I LoxoneOneWire: issuerId: aabbccddeeff0011 → ROM: 01AABBCCDDEEFF2F
+I LoxoneOneWire: Add to Loxone (if new): 01AABBCCDDEEFF2F
 ```
 
 Die `issuerId` ist für **alle Geräte derselben Apple-ID** identisch:
@@ -123,7 +123,7 @@ iPhone + Apple Watch + iPad einer Person = gleiche `issuerId` = gleicher ROM.
 
 1. **1-Wire Suche starten:** Loxone Config → 1-Wire Extension → "1-Wire Suche"
 2. **Tap ausführen:** Apple Device an PN532 halten während Suche läuft
-3. **Gerät erscheint:** ROM `01F296...` taucht in den Suchergebnissen auf
+3. **Gerät erscheint:** ROM `01AABB...` taucht in den Suchergebnissen auf
 4. **Zugangs-Baustein zuordnen:** 1-Wire Gerät dem Zugangs-Baustein zuweisen
 5. **Fertig:** Nächster Tap öffnet die Tür
 
@@ -189,6 +189,6 @@ Byte 7:    CRC8              (Dallas CRC, automatisch berechnet)
 
 Beispiel:
 ```
-issuerId:  f2 96 35 48 4b 2e 48 ...
-ROM:       01 f2 96 35 48 4b 2e AA   (AA = berechnetes CRC8)
+issuerId:  aa bb cc dd ee ff 00 11
+ROM:       01 aa bb cc dd ee ff 2f   (2f = berechnetes CRC8)
 ```

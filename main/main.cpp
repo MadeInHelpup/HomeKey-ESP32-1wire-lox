@@ -13,6 +13,7 @@
 #include "HardwareManager.hpp"
 #include "MqttManager.hpp"
 #include "WebServerManager.hpp"
+#include "LoxoneBridge.hpp"
 #include <functional>
 #include <sodium/crypto_sign.h>
 #include <sodium/crypto_box.h>
@@ -216,6 +217,7 @@ void setup() {
   webServerManager.setNfcManager(nfcManager.get());
   webServerManager.setMqttManager(mqttManager.get());
   hardwareManager->begin();
+  LoxoneBridge::begin();
   homekitLock->begin();
   lockManager->begin();
   pollHS = true;

@@ -11,6 +11,7 @@
 #include "EthernetDriver.hpp"
 #include "fmt/ranges.h"
 #include "WebServerManager.hpp"
+#include "LoxoneBridge.hpp"
 #include "ConfigManager.hpp"
 #include "HomeSpan.h"
 #include "MqttManager.hpp"
@@ -515,6 +516,14 @@ void WebServerManager::setupRoutes() {
 
       // Catch-all (must be last)
       {"/*", HTTP_GET, handleRootOrHash, this}};
+
+  // Optional Loxone 1-Wire bridge endpoints. Registered ahead of the catch-all
+  // route below, which would otherwise swallow them.
+  LoxoneBridge::registerRoutes(m_server, [this](httpd_req_t *req) {
+    if (basicAuth(req)) return true;
+    sendAuthFailure(req);
+    return false;
+  });
 
   for (auto &r : routes) {
     httpd_uri_t uri = {.uri = r.uri,

@@ -1,18 +1,21 @@
-# Test build of the Loxone 1-Wire bridge for the classic ESP32.
+# Build of the Loxone 1-Wire bridge for the classic ESP32.
 #
 # Builds the OTA firmware, the factory image and the web UI image with
-# CONFIG_LOXONE_ONEWIRE=y and publishes them as the "loxone-test" pre-release.
-# Only runs for this feature branch; not meant to be part of an upstream PR.
-name: Loxone test build
+# CONFIG_LOXONE_ONEWIRE=y and publishes them as the "loxone-latest" pre-release.
+name: Loxone build
 
 on:
   workflow_dispatch:
   push:
     branches:
+      - main
       - feat/loxone-onewire-bridge
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
 
 concurrency:
-  group: loxone-test-build
+  group: loxone-build
   cancel-in-progress: true
 
 permissions:
@@ -130,12 +133,12 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           ls -l artifacts
-          gh release delete loxone-test --cleanup-tag --yes || true
-          gh release create loxone-test \
+          gh release delete loxone-latest --cleanup-tag --yes || true
+          gh release create loxone-latest \
             --prerelease \
             --target "${{ github.sha }}" \
-            --title "Loxone 1-Wire test build" \
-            --notes "Test build of ${{ github.ref_name }} @ ${{ github.sha }} for the classic ESP32. OTA: upload esp32-loxone.firmware.ota.bin and littlefs.bin on the OTA page of the web UI. Factory image only for USB flashing, it erases settings and pairing." \
+            --title "Loxone 1-Wire build" \
+            --notes "Build of ${{ github.ref_name }} @ ${{ github.sha }} for the classic ESP32. OTA: upload esp32-loxone.firmware.ota.bin and littlefs.bin on the OTA page of the web UI. Factory image only for USB flashing, it erases settings and pairing." \
             artifacts/esp32-loxone.firmware.ota.bin \
             artifacts/esp32-loxone.firmware.factory.bin \
             artifacts/littlefs.bin

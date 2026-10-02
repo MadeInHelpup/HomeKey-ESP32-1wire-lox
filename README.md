@@ -12,6 +12,14 @@
 
 </div>
 
+> [!NOTE]
+> **Fork mit Loxone-1-Wire-Bridge.** Dieser Fork basiert auf [rednblkx/HomeKey-ESP32](https://github.com/rednblkx/HomeKey-ESP32)
+> und ergänzt optional eine Loxone-1-Wire-Bridge: Nach einem erfolgreichen HomeKey-Tap erscheint ein virtueller
+> DS1990A-iButton auf dem 1-Wire-Bus. Aktivierung über `CONFIG_LOXONE_ONEWIRE`, Anleitung in
+> [docs/LOXONE_INTEGRATION.md](docs/LOXONE_INTEGRATION.md) (deutsch) und
+> [components/loxone_onewire/README.md](components/loxone_onewire/README.md) (englisch).
+> Fertige Builds für den ESP32 liegen unter [Releases](../../releases/tag/loxone-latest).
+
 ## What is HomeKey-ESP32?
 
 The project aims to be the easy DIY solution for using Apple's HomeKey feature without the need to purchase a compatible smart lock that you probably don't want. HomeKey-ESP32 brings Apple's secure NFC-based unlocking to an ESP32 module near you, enabling you to unlock doors and whatnot with a simple tap of your iPhone or Apple Watch.

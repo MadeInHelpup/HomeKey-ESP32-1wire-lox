@@ -13,12 +13,13 @@
 </div>
 
 > [!NOTE]
-> **Fork mit Loxone-1-Wire-Bridge.** Dieser Fork basiert auf [rednblkx/HomeKey-ESP32](https://github.com/rednblkx/HomeKey-ESP32)
-> und ergänzt optional eine Loxone-1-Wire-Bridge: Nach einem erfolgreichen HomeKey-Tap erscheint ein virtueller
-> DS1990A-iButton auf dem 1-Wire-Bus. Aktivierung über `CONFIG_LOXONE_ONEWIRE`, Anleitung in
-> [docs/LOXONE_INTEGRATION.md](docs/LOXONE_INTEGRATION.md) (deutsch) und
-> [components/loxone_onewire/README.md](components/loxone_onewire/README.md) (englisch).
-> Fertige Builds für den ESP32 liegen unter [Releases](../../releases/tag/loxone-latest).
+> **Fork with a Loxone 1-Wire bridge.** This fork is based on [rednblkx/HomeKey-ESP32](https://github.com/rednblkx/HomeKey-ESP32)
+> and adds an optional Loxone 1-Wire bridge: after a successful HomeKey tap a virtual DS1990A iButton appears on the
+> 1-Wire bus. Enable it with `CONFIG_LOXONE_ONEWIRE`.
+>
+> - User guide: [Deutsch](docs/LOXONE_INTEGRATION.md) | [English](docs/LOXONE_INTEGRATION.en.md)
+> - Component reference: [components/loxone_onewire](components/loxone_onewire/README.md)
+> - Ready-made ESP32 builds: [Releases](../../releases/tag/loxone-latest)
 
 ## What is HomeKey-ESP32?
 
